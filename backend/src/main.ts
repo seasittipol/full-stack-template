@@ -6,11 +6,11 @@ import { ConfigService } from './common/config';
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
-    
+
     const configService = app.get(ConfigService);
-    
+
     app.setGlobalPrefix(configService.globalPrefix);
-    
+
     // Enable CORS
     const corsConfig = configService.cors;
     app.enableCors({
@@ -26,14 +26,13 @@ async function bootstrap() {
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api', app, document);
-    
+
     // Start the application
     const port = configService.port;
     await app.listen(port);
-    
+
     // Print configuration summary
     console.log(`🚀 Application is running on: ${await app.getUrl()}`);
-    
   } catch (error) {
     console.error('❌ Failed to start application:', error);
     process.exit(1);

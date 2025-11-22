@@ -4,7 +4,7 @@ export default registerAs('app', () => ({
   // Server Configuration
   port: parseInt(process.env.PORT || '3000', 10),
   environment: process.env.NODE_ENV || 'development',
-  
+
   // Database Configuration
   database: {
     host: process.env.DB_HOST || 'localhost',
@@ -14,7 +14,7 @@ export default registerAs('app', () => ({
     name: process.env.DB_NAME || 'myapp',
     synchronize: process.env.DB_SYNCHRONIZE === 'true' || false,
   },
-  
+
   // JWT Configuration
   jwt: {
     secret: process.env.JWT_SECRET || 'your-secret-key',
@@ -22,13 +22,13 @@ export default registerAs('app', () => ({
     refreshSecret: process.env.JWT_REFRESH_SECRET || 'your-refresh-secret',
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
   },
-  
+
   // CORS Configuration
   cors: {
     origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
     credentials: process.env.CORS_CREDENTIALS === 'true' || true,
   },
-  
+
   // Redis Configuration (if needed)
   redis: {
     host: process.env.REDIS_HOST || 'localhost',
@@ -36,14 +36,14 @@ export default registerAs('app', () => ({
     password: process.env.REDIS_PASSWORD || undefined,
     db: parseInt(process.env.REDIS_DB || '0', 10),
   },
-  
+
   // API Configuration
   api: {
     prefix: process.env.API_PREFIX || 'api',
     version: process.env.API_VERSION || 'v1',
     timeout: parseInt(process.env.API_TIMEOUT || '30000', 10),
   },
-  
+
   // File Upload Configuration
   upload: {
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE || '5242880', 10), // 5MB
@@ -54,7 +54,7 @@ export default registerAs('app', () => ({
       'application/pdf',
     ],
   },
-  
+
   // Email Configuration
   email: {
     host: process.env.EMAIL_HOST || 'localhost',
@@ -63,11 +63,14 @@ export default registerAs('app', () => ({
     password: process.env.EMAIL_PASSWORD || '',
     from: process.env.EMAIL_FROM || 'noreply@example.com',
   },
-  
+
   // Security Configuration
   security: {
     bcryptRounds: parseInt(process.env.BCRYPT_ROUNDS || '12', 10),
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX || '100', 10),
-    rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10), // 15 minutes
+    rateLimitWindowMs: parseInt(
+      process.env.RATE_LIMIT_WINDOW_MS || '900000',
+      10,
+    ), // 15 minutes
   },
 }));
